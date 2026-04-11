@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - HS Code System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container" id="signupPage">
+        <div class="tear-effect"></div>
+
+        <img src="img/Airplane.svg" class="airplane" alt="Airplane">
+
+        <div class="signup-card">
+            <h2 class="main-title">Create an account</h2>
+            <p class="subtitle">Please use your company email!</p>
+
+            <form id="signupForm">
+                <div class="input-group">
+                    <label for="user">User</label>
+                    <input type="text" id="user" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="input-group">
+                    <div style="display: flex; justify-content: space-between;">
+                        <label for="password">Password</label>
+                        <span style="font-size: 10px; color: #9ca3af; cursor: pointer;">👁️ Hide</span>
+                    </div>
+                    <input type="password" id="password" required>
+                </div>
+
+                <ul class="password-requirements">
+                    <li><span class="requirement-bullet">●</span> Use a number</li>
+                    <li><span class="requirement-bullet">●</span> Upper & lower case</li>
+                    <li><span class="requirement-bullet">●</span> 8+ characters</li>
+                    <li><span class="requirement-bullet">●</span> Use a symbol</li>
+                </ul>
+
+                <button type="submit" class="btn-primary">Login</button>
+                
+                <p style="font-size: 12px; margin-top: 15px; text-align: center;">
+                    Already have an account? <a href="index.html" style="color: #4361ee; font-weight: bold; text-decoration: none;">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Interaksi sederhana saat tombol ditekan
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Proses pendaftaran simulasi berhasil!');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

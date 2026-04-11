@@ -1,144 +1,49 @@
-/* --- GLOBAL STYLES --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+/* --- GLOBAL --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background-color: #8c8c8c; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
 
-body {
-    background-color: #8c8c8c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    overflow-x: hidden;
+/* --- TEMA LOGIN (Gudang Denso) --- */
+#loginPage.login-container {
+    display: flex; width: 900px; height: 550px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
+#loginPage .login-left { flex: 1; padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+#loginPage .login-right { flex: 1; background: #eee; }
+#loginPage .login-right img { width: 100%; height: 100%; object-fit: cover; }
 
-/* --- LOGIN PAGE STYLES (ORIGINAL) --- */
-.login-container {
-    display: flex;
-    width: 100%;
-    max-width: 900px;
-    height: 550px;
-    background: white;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
+/* --- TEMA SIGN UP (Langit & Pesawat) --- */
+#signupPage.login-container {
+    width: 900px; height: 550px; background: #5dade2; border-radius: 15px; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden;
 }
-
-.login-left {
-    flex: 1;
-    padding: 40px 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: white;
-    z-index: 5;
-}
-
-.login-right {
-    flex: 1;
-    background-color: #4361ee;
-    position: relative;
-    overflow: hidden;
-}
-
-.login-right img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* --- SIGN UP PAGE STYLES (NEW THEME) --- */
-/* Kita pakai class induk .signup-page agar tidak tabrakan */
-.signup-page .login-left {
-    flex: 1.2;
-    background: #5dade2; /* Biru Langit */
-    position: relative;
-    z-index: 2;
-    padding: 0; /* Biar card di tengah */
-}
-
 .tear-effect {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+    position: absolute; top: 0; right: 0; width: 100%; height: 100%;
     background-image: url('https://images.unsplash.com/photo-1519003722824-192d992a6059?q=80&w=800');
-    background-size: cover;
-    background-position: center;
-    clip-path: polygon(100% 0, 100% 100%, 60% 100%, 85% 45%, 70% 0);
-    z-index: 1;
+    background-size: cover; clip-path: polygon(100% 0, 100% 100%, 65% 100%, 88% 45%, 75% 0); z-index: 1;
 }
-
 .airplane {
-    position: absolute;
-    width: 120px;
-    z-index: 10;
-    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.2));
-    bottom: -100px;
-    right: -100px;
-    transform: rotate(-45deg);
+    position: absolute; width: 100px; z-index: 10; bottom: -100px; right: -100px; transform: rotate(10deg);
     animation: flyUp 4s ease-out forwards;
 }
-
 @keyframes flyUp {
-    0% { bottom: -100px; right: -100px; transform: rotate(-45deg) scale(0.8); }
-    100% { bottom: 60%; right: 75%; transform: rotate(-45deg) scale(1.1); }
+    0% { bottom: -100px; right: -100px; }
+    100% { bottom: 65%; right: 78%; }
 }
-
 .signup-card {
-    background: white;
-    width: 400px;
-    padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    z-index: 20;
-    text-align: center;
+    background: white; width: 380px; padding: 30px; border-radius: 15px; z-index: 20; box-shadow: 0 10px 30px rgba(0,0,0,0.15); text-align: center;
 }
 
-/* --- SHARED COMPONENTS (Bisa dipakai keduanya) --- */
-.brand-logo { color: #e21e26; font-style: italic; font-weight: bold; font-size: 28px; margin-bottom: 20px; }
-.main-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-.subtitle { font-size: 12px; color: #6b7280; margin-bottom: 25px; }
-
+/* --- REUSABLE COMPONENTS --- */
+.brand-logo { color: #e21e26; font-style: italic; font-weight: bold; font-size: 28px; margin-bottom: 20px; text-align: left; }
+.main-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; color: #333; }
+.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
 .input-group { margin-bottom: 15px; text-align: left; }
-.input-group label { display: block; font-size: 13px; margin-bottom: 5px; color: #374151; }
-.input-group input { 
-    width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 8px; outline: none; 
-}
+.input-group label { display: block; font-size: 13px; margin-bottom: 5px; font-weight: 600; }
+.input-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; outline: none; }
+.input-group input:focus { border-color: #4361ee; }
 
-.password-requirements {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 20px;
-}
+.password-requirements { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; list-style: none; text-align: left; }
+.password-requirements li { font-size: 10px; color: #999; display: flex; align-items: center; }
+.requirement-bullet { color: #ccc; margin-right: 5px; }
 
-.password-requirements li {
-    font-size: 9px;
-    color: #9ca3af;
-    display: flex;
-    align-items: center;
-    list-style: none;
-}
-
-.requirement-bullet { color: #d1d5db; margin-right: 5px; }
-
-.btn-primary-blue {
-    width: 100%;
-    padding: 12px;
-    background: #4361ee;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-primary-blue:hover { opacity: 0.9; transform: translateY(-2px); }
+.btn-primary { width: 100%; padding: 12px; background: #4361ee; color: white; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.btn-primary:hover { background: #333; transform: translateY(-2px); }
+.btn-outline { width: 100%; padding: 12px; background: transparent; color: #4361ee; border: 1px solid #4361ee; border-radius: 25px; font-weight: bold; cursor: pointer; display: inline-block; text-decoration: none; text-align: center; margin-top: 10px; }
