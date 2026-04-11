@@ -7,57 +7,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="login-container" id="signupPage">
-        <div class="tear-effect"></div>
+    <div id="signupPage-wrapper">
+    <div class="background-content"></div>
+    <div class="sky-overlay"></div>
+
+        <svg class="tear-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <path class="stroke-tear" d="M1000,450 L200,200" />
+            <path class="stroke-tear" d="M550,1000 L200,200" />
+        </svg>
 
         <img src="img/Airplane.svg" class="airplane" alt="Airplane">
 
         <div class="signup-card">
+            <div class="brand">DENSO</div>
             <h2 class="main-title">Create an account</h2>
             <p class="subtitle">Please use your company email!</p>
-
-            <form id="signupForm">
+            <form>
                 <div class="input-group">
-                    <label for="user">User</label>
-                    <input type="text" id="user" required>
+                    <label>User</label>
+                    <input type="text" placeholder="Your name" required>
                 </div>
-
                 <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
+                    <label>Email</label>
+                    <input type="email" placeholder="email@company.com" required>
                 </div>
-
                 <div class="input-group">
-                    <div style="display: flex; justify-content: space-between;">
-                        <label for="password">Password</label>
-                        <span style="font-size: 10px; color: #9ca3af; cursor: pointer;">👁️ Hide</span>
-                    </div>
-                    <input type="password" id="password" required>
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required>
                 </div>
-
-                <ul class="password-requirements">
-                    <li><span class="requirement-bullet">●</span> Use a number</li>
-                    <li><span class="requirement-bullet">●</span> Upper & lower case</li>
-                    <li><span class="requirement-bullet">●</span> 8+ characters</li>
-                    <li><span class="requirement-bullet">●</span> Use a symbol</li>
-                </ul>
-
-                <button type="submit" class="btn-primary">Login</button>
-                
-                <p style="font-size: 12px; margin-top: 15px; text-align: center;">
+                <button type="submit" class="btn-blue">Sign Up</button>
+                <p style="margin-top: 20px; font-size: 14px; text-align: center;">
                     Already have an account? <a href="index.html" style="color: #4361ee; font-weight: bold; text-decoration: none;">Login</a>
                 </p>
             </form>
         </div>
     </div>
-
-    <script>
-        // Interaksi sederhana saat tombol ditekan
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Proses pendaftaran simulasi berhasil!');
-            window.location.href = 'index.html';
-        });
-    </script>
 </body>
 </html>

@@ -5,45 +5,128 @@ body { background-color: #8c8c8c; display: flex; justify-content: center; align-
 /* --- TEMA LOGIN (Gudang Denso) --- */
 #loginPage.login-container {
     display: flex; width: 900px; height: 550px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    position: relative; z-index: 100;
 }
 #loginPage .login-left { flex: 1; padding: 60px; display: flex; flex-direction: column; justify-content: center; }
 #loginPage .login-right { flex: 1; background: #eee; }
 #loginPage .login-right img { width: 100%; height: 100%; object-fit: cover; }
 
-/* --- TEMA SIGN UP (Langit & Pesawat) --- */
-#signupPage.login-container {
-    width: 900px; height: 550px; background: #5dade2; border-radius: 15px; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden;
+/* --- TEMA SIGN UP (ANIMASI ROBEKAN SIMETRIS) --- */
+/* Container pembungkus utama */
+/* --- GLOBAL (Pastikan ada z-index pembungkus) --- */
+#signupPage-wrapper {
+    position: fixed; inset: 0;
+    display: flex; justify-content: center; align-items: center;
+    background-color: #8c8c8c;
+    overflow: hidden;
+    z-index: 1; /* Pastikan di depan background abu */
 }
-.tear-effect {
-    position: absolute; top: 0; right: 0; width: 100%; height: 100%;
-    background-image: url('https://images.unsplash.com/photo-1519003722824-192d992a6059?q=80&w=800');
-    background-size: cover; clip-path: polygon(100% 0, 100% 100%, 65% 100%, 88% 45%, 75% 0); z-index: 1;
+
+/* Background abu/gambar yang akan muncul (Di belakang langit) */
+.background-content {
+    position: absolute; inset: 0;
+    background-image: url('img/bg.svg');
+    background-size: cover; background-position: center;
+    z-index: 0; /* Di belakang langit */
 }
+
+/* Langit Biru yang Dirobek (Overlay) */
+.sky-overlay {
+    position: absolute; inset: 0;
+    background-color: #5dade2;
+    z-index: 1; /* Di depan background abu, di belakang card */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    animation: symmetricTear 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes symmetricTear {
+    0% { 
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); 
+    }
+    100% { 
+        /* 100% 45% -> Sinkron dengan M1000,450 (Garis atas)
+           20% 20%  -> Sinkron dengan L200,200 (Titik kuncup pesawat)
+           55% 100% -> Sinkron dengan M550,1000 (Garis bawah)
+        */
+        clip-path: polygon(
+            0% 0%, 
+            100% 0%, 
+            100% 45%,   
+            20% 20%,    
+            55% 100%,  
+            0% 100%
+        ); 
+    }
+}
+
+/* --- Pastikan Garis Putih Muncul & Menempel --- */
+.tear-svg { 
+    position: absolute; 
+    inset: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 2; 
+    pointer-events: none; 
+}
+
+.stroke-tear {
+    fill: none; 
+    stroke: white; 
+    stroke-width: 12; 
+    stroke-linecap: round;
+    /* Dasharray harus besar karena garisnya panjang */
+    stroke-dasharray: 2000; 
+    stroke-dashoffset: 2000;
+    animation: drawPaths 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes drawPaths { to { stroke-dashoffset: 0; } }
+
+/* --- Pesawat Berhenti di Titik 20% --- */
 .airplane {
-    position: absolute; width: 100px; z-index: 10; bottom: -100px; right: -100px; transform: rotate(10deg);
-    animation: flyUp 4s ease-out forwards;
+    position: absolute; 
+    width: 115px; z-index: 100;
+    bottom: -10%; right: -15%; 
+    transform: rotate(20deg);
+    animation: flyPlane 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
-@keyframes flyUp {
-    0% { bottom: -100px; right: -100px; }
-    100% { bottom: 65%; right: 78%; }
+
+@keyframes flyPlane {
+    0% { bottom: -15%; right: -15%; transform: rotate(20deg) scale(0.6); }
+    100% { 
+        /* Koordinat 80% dari kanan/bawah sama dengan 20% dari kiri/atas */
+        bottom: 80%; 
+        right: 80%; 
+        transform: rotate(20deg) scale(1.1);
+        margin-bottom: -35px; 
+        margin-right: -35px;
+    }
 }
+
+
+
+/* Biar Card di depan animasi robekan tapi di belakang pesawat kalau perlu */
+/* --- PERBAIKAN POSISI CARD AGAR DI TENGAH --- */
 .signup-card {
-    background: white; width: 380px; padding: 30px; border-radius: 15px; z-index: 20; box-shadow: 0 10px 30px rgba(0,0,0,0.15); text-align: center;
+    position: absolute; /* Ubah dari relative ke absolute */
+    top: 50%;           /* Geser ke tengah dari atas */
+    left: 50%;          /* Geser ke tengah dari kiri */
+    transform: translate(-50%, -50%); /* Titik pusat card benar-benar di tengah */
+    
+    z-index: 100;       /* Pastikan di atas robekan (z-index sky-overlay cuma 1) */
+    
+    background: white; 
+    width: 500px; 
+    padding: 45px 55px;
+    border-radius: 20px; 
+    box-shadow: 0 15px 45px rgba(0,0,0,0.3); 
+    text-align: center;
 }
 
-/* --- REUSABLE COMPONENTS --- */
-.brand-logo { color: #e21e26; font-style: italic; font-weight: bold; font-size: 28px; margin-bottom: 20px; text-align: left; }
-.main-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; color: #333; }
-.subtitle { font-size: 13px; color: #777; margin-bottom: 20px; }
-.input-group { margin-bottom: 15px; text-align: left; }
-.input-group label { display: block; font-size: 13px; margin-bottom: 5px; font-weight: 600; }
-.input-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; outline: none; }
-.input-group input:focus { border-color: #4361ee; }
-
-.password-requirements { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; list-style: none; text-align: left; }
-.password-requirements li { font-size: 10px; color: #999; display: flex; align-items: center; }
-.requirement-bullet { color: #ccc; margin-right: 5px; }
-
-.btn-primary { width: 100%; padding: 12px; background: #4361ee; color: white; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.btn-primary:hover { background: #333; transform: translateY(-2px); }
-.btn-outline { width: 100%; padding: 12px; background: transparent; color: #4361ee; border: 1px solid #4361ee; border-radius: 25px; font-weight: bold; cursor: pointer; display: inline-block; text-decoration: none; text-align: center; margin-top: 10px; }
+.brand { color: #e21e26; font-style: italic; font-weight: 700; font-size: 32px; margin-bottom: 20px; text-align: left; }
+.main-title { font-size: 24px; font-weight: 700; margin-bottom: 10px; color: #111; text-align: left; }
+.subtitle { font-size: 14px; color: #6b7280; margin-bottom: 30px; text-align: left; }
+.input-group { margin-bottom: 20px; text-align: left; }
+.input-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #374151; }
+.input-group input { width: 100%; padding: 12px; border: 1.5px solid #d1d5db; border-radius: 10px; outline: none; }
+.btn-blue { width: 100%; padding: 16px; background: #4361ee; color: white; border: none; border-radius: 35px; font-weight: 600; cursor: pointer; font-size: 16px; }
