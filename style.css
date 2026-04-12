@@ -1,120 +1,129 @@
 /* --- GLOBAL --- */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-body { background-color: #8c8c8c; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', sans-serif; 
+}
+
+body { 
+    background-color: #8c8c8c; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    overflow: hidden; 
+}
 
 /* --- TEMA LOGIN (Gudang Denso) --- */
 #loginPage.login-container {
-    display: flex; width: 900px; height: 550px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    position: relative; z-index: 100;
+    display: flex; 
+    width: 900px; 
+    height: 550px; 
+    background: white; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    position: relative; 
+    z-index: 100;
 }
 #loginPage .login-left { flex: 1; padding: 60px; display: flex; flex-direction: column; justify-content: center; }
 #loginPage .login-right { flex: 1; background: #eee; }
 #loginPage .login-right img { width: 100%; height: 100%; object-fit: cover; }
 
-/* --- TEMA SIGN UP (ANIMASI ROBEKAN SIMETRIS) --- */
-/* Container pembungkus utama */
-/* --- GLOBAL (Pastikan ada z-index pembungkus) --- */
+/* --- SIGNUP WRAPPER --- */
 #signupPage-wrapper {
-    position: fixed; inset: 0;
-    display: flex; justify-content: center; align-items: center;
+    position: fixed; 
+    inset: 0;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
     background-color: #8c8c8c;
     overflow: hidden;
-    z-index: 1; /* Pastikan di depan background abu */
+    z-index: 1; 
 }
 
-/* Background abu/gambar yang akan muncul (Di belakang langit) */
 .background-content {
-    position: absolute; inset: 0;
+    position: absolute; 
+    inset: 0;
     background-image: url('img/bg.svg');
-    background-size: cover; background-position: center;
-    z-index: 0; /* Di belakang langit */
+    background-size: cover; 
+    background-position: center;
+    z-index: 0; 
 }
 
-/* Langit Biru yang Dirobek (Overlay) */
+/* --- ANIMASI KERTAS ROBEK BERSAMA PESAWAT --- */
+:root {
+    --tear-speed: 5.5s; /* Ubah angka ini kalau mau lebih cepat/lambat */
+    --tear-ease: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.sky-white-edge, .sky-overlay {
+    position: absolute;
+    inset: 0;
+    filter: url(#rough-edge); /* Efek pinggiran kertas kasar */
+    animation: followPlaneTear var(--tear-speed) var(--tear-ease) forwards;
+}
+
+/* Layer Putih (Pinggiran Robekan) */
+.sky-white-edge {
+    background-color: white;
+    z-index: 1;
+    transform: translate(6px, 6px) scale(1.01); /* Geser sedikit biar jadi outline */
+}
+
+/* Layer Langit Biru */
 .sky-overlay {
-    position: absolute; inset: 0;
     background-color: #5dade2;
-    z-index: 1; /* Di depan background abu, di belakang card */
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-    animation: symmetricTear 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 2;
 }
 
-@keyframes symmetricTear {
-    0% { 
-        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); 
-    }
-    100% { 
-        /* 100% 45% -> Sinkron dengan M1000,450 (Garis atas)
-           20% 20%  -> Sinkron dengan L200,200 (Titik kuncup pesawat)
-           55% 100% -> Sinkron dengan M550,1000 (Garis bawah)
-        */
+@keyframes followPlaneTear {
+    0% {
         clip-path: polygon(
-            0% 0%, 
-            100% 0%, 
-            100% 45%,   
-            20% 20%,    
-            55% 100%,  
-            0% 100%
-        ); 
+            0% 0%, 100% 0%, 100% 45%, 
+            100% 100%, 
+            55% 100%, 0% 100%
+        );
+    }
+    100% {
+        /* Berhenti di titik 20% 20%, sama dengan posisi akhir pesawat */
+        clip-path: polygon(
+            0% 0%, 100% 0%, 100% 45%, 
+            20% 20%, 
+            55% 100%, 0% 100%
+        );
     }
 }
 
-/* --- Pastikan Garis Putih Muncul & Menempel --- */
-.tear-svg { 
-    position: absolute; 
-    inset: 0; 
-    width: 100%; 
-    height: 100%; 
-    z-index: 2; 
-    pointer-events: none; 
-}
-
-.stroke-tear {
-    fill: none; 
-    stroke: white; 
-    stroke-width: 12; 
-    stroke-linecap: round;
-    /* Dasharray harus besar karena garisnya panjang */
-    stroke-dasharray: 2000; 
-    stroke-dashoffset: 2000;
-    animation: drawPaths 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes drawPaths { to { stroke-dashoffset: 0; } }
-
-/* --- Pesawat Berhenti di Titik 20% --- */
 .airplane {
-    position: absolute; 
-    width: 115px; z-index: 100;
-    bottom: -10%; right: -15%; 
-    transform: rotate(20deg);
-    animation: flyPlane 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    position: absolute;
+    width: 115px;
+    z-index: 100;
+    animation: flyPlane var(--tear-speed) var(--tear-ease) forwards;
 }
 
 @keyframes flyPlane {
-    0% { bottom: -15%; right: -15%; transform: rotate(20deg) scale(0.6); }
-    100% { 
-        /* Koordinat 80% dari kanan/bawah sama dengan 20% dari kiri/atas */
-        bottom: 80%; 
-        right: 80%; 
-        transform: rotate(20deg) scale(1.1);
-        margin-bottom: -35px; 
-        margin-right: -35px;
+    0% {
+        top: 100%;
+        left: 100%;
+        transform: translate(-30%, -30%) rotate(20deg) scale(0.6);
+    }
+    100% {
+        /* Posisi akhir 20% 20% sejajar dengan clip-path kertas */
+        top: 20%;
+        left: 20%;
+        transform: translate(-30%, -30%) rotate(20deg) scale(1.1);
     }
 }
 
-
-
-/* Biar Card di depan animasi robekan tapi di belakang pesawat kalau perlu */
-/* --- PERBAIKAN POSISI CARD AGAR DI TENGAH --- */
+/* --- SIGNUP CARD --- */
 .signup-card {
-    position: absolute; /* Ubah dari relative ke absolute */
-    top: 50%;           /* Geser ke tengah dari atas */
-    left: 50%;          /* Geser ke tengah dari kiri */
-    transform: translate(-50%, -50%); /* Titik pusat card benar-benar di tengah */
-    
-    z-index: 100;       /* Pastikan di atas robekan (z-index sky-overlay cuma 1) */
-    
+    position: absolute; 
+    top: 50%;           
+    left: 50%;          
+    transform: translate(-50%, -50%); 
+    z-index: 100;      
     background: white; 
     width: 500px; 
     padding: 45px 55px;

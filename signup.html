@@ -9,38 +9,45 @@
 <body>
     <div id="signupPage-wrapper">
     <div class="background-content"></div>
+
+    <div class="sky-white-edge"></div>
     <div class="sky-overlay"></div>
 
-        <svg class="tear-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-            <path class="stroke-tear" d="M1000,450 L200,200" />
-            <path class="stroke-tear" d="M550,1000 L200,200" />
-        </svg>
+    <svg style="position: absolute; width: 0; height: 0;">
+        <filter id="rough-edge">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" />
+        </filter>
+    </svg>
 
-        <img src="img/Airplane.svg" class="airplane" alt="Airplane">
+    <img src="img/Airplane.svg" class="airplane" alt="Airplane">
 
-        <div class="signup-card">
-            <div class="brand">DENSO</div>
-            <h2 class="main-title">Create an account</h2>
-            <p class="subtitle">Please use your company email!</p>
-            <form>
-                <div class="input-group">
-                    <label>User</label>
-                    <input type="text" placeholder="Your name" required>
-                </div>
-                <div class="input-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="email@company.com" required>
-                </div>
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="btn-blue">Sign Up</button>
-                <p style="margin-top: 20px; font-size: 14px; text-align: center;">
-                    Already have an account? <a href="index.html" style="color: #4361ee; font-weight: bold; text-decoration: none;">Login</a>
-                </p>
-            </form>
+    <div class="signup-card">
         </div>
+</div>
+
+        <div class="brand">DENSO</div>
+        <h2 class="main-title">Create an account</h2>
+        <p class="subtitle">Please use your company email!</p>
+        <form>
+            <div class="input-group">
+                <label>User</label>
+                <input type="text" placeholder="Your name" required>
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="email@company.com" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-blue">Sign Up</button>
+            <p style="margin-top: 20px; font-size: 14px; text-align: center;">
+                Already have an account? <a href="index.html" style="color: #4361ee; font-weight: bold; text-decoration: none;">Login</a>
+            </p>
+        </form>
     </div>
+</div>
 </body>
 </html>
