@@ -4,38 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - HS Code System</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div class="login-container" id="loginPage">
+    <div class="login-container">
         <div class="login-left">
-            <div class="header-section">
-                <h1 class="brand-logo">DENSO</h1>
-                <h2 class="main-title">Artificial Intelligence Driving Results For Finding HS Code</h2>
+            <div class="login-content">
+                <h1 class="brand-logo">DYX</h1>
+                
+                <h2 class="main-title">Artificial Intelligence Driving<br>Results For The finding HS Code</h2>
                 <p class="subtitle">Welcome back! Please login to your account.</p>
+
+                <form action="#">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="remember"> 
+                            <span class="checkmark"></span>
+                            Remember Me
+                        </label>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-login">Login</button>
+                        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                    </div>
+                </form>
             </div>
-
-            <form id="loginForm">
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="••••••••" required>
-                </div>
-
-                <div class="button-group">
-                    <button type="submit" class="btn-primary">Login</button>
-                    <a href="signup.html" class="btn-outline">Sign Up</a>
-                </div>
-            </form>
         </div>
 
         <div class="login-right">
-            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" alt="Logistics Warehouse">
-        </div>
+            </div>
     </div>
 </body>
 </html>
