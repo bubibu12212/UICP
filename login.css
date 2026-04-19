@@ -83,15 +83,18 @@
     /* --- ANIMASI BUMI REALISTIS --- */
     /* --- ANIMASI BUMI DARI UIVERSE --- */
     /* --- ANIMASI BUMI DARI UIVERSE --- */
+    
+
+
+
     .section-banner {
-    height: 350px;
-    width: 350px;
+    height: 420px;   /* ← slightly bigger */
+    width: 420px;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 45%;        /* ← slightly higher */
+    left: 55%;       /* ← shift right a bit */
     transform: translate(-50%, -50%);
     
-    /* Ganti base64 dengan URL texture yang benar */
     background-image: url("https://eoimages.gsfc.nasa.gov/images/imagerecords/74000/74117/world.200408.3x5400x2700.jpg");
     background-size: auto 100%;
     background-repeat: repeat-x;
@@ -105,14 +108,14 @@
         -7px 0px 11px #c3f4ff inset,
         21px 3px 35px #000 inset, 
         -33px -3px 47px #c3f4ff99 inset,
-        350px 0px 60px #00000066 inset, 
+        420px 0px 60px #00000066 inset, 
         210px 0px 53px #000000aa inset;
     z-index: 1;
 }
 
 @keyframes earthRotate {
     0%   { background-position: 0 center; }
-    100% { background-position: 1280px center; }
+    100% { background-position: 5400px center; }
 }
 
     /* --- BINTANG-BINTANG KELAP-KELIP --- */
@@ -143,55 +146,87 @@
     #star-7 { position: absolute; left: 420px; top: 80px; animation: twinkling 2s infinite; }
 
     /* --- ELEMEN LOGISTIK (DI DEPAN BUMI) --- */
-    .scene-element { position: absolute; z-index: 5; }
+/* --- ELEMEN LOGISTIK (DI DEPAN BUMI) --- */
+/* --- ELEMEN LOGISTIK (DI DEPAN BUMI) --- */
+.scene-element { 
+    position: absolute; 
+}
 
-    /* 1. Pesawat (Mengambang Naik Turun) */
-    .airplane {
-        width: 160px;
-        top: 20%;
-        right: 15%;
-        animation: floatPlane 5s ease-in-out infinite;
-    }
-    @keyframes floatPlane {
-        0%, 100% { transform: translateY(0) rotate(15deg); }
-        50% { transform: translateY(-20px) rotate(18deg); }
-    }
+/* 1. Pesawat - flying diagonally over the top of Earth */
+.airplane {
+    width: 480px;
+    top: 15%;
+    left: 70%;
+    transform: translateX(-60%) rotate(-5deg);
+    z-index: 10;
+    animation: floatPlane 6s ease-in-out infinite;
+}
+@keyframes floatPlane {
+    0%, 100% { transform: translateX(-60%) translateY(0) rotate(-5deg); }
+    50%       { transform: translateX(-60%) translateY(-12px) rotate(-3deg); }
+}
 
-    /* 2. Truk (Seolah Jalan / Bounce tipis karena mesin) */
-    .truck {
-        width: 200px;
-        bottom: 20%;
-        left: 10%;
-        animation: truckIdle 1.5s ease-in-out infinite alternate;
-    }
-    @keyframes truckIdle {
-        0% { transform: translateY(0px); }
-        100% { transform: translateY(-3px); }
-    }
+/* 2. Truk - bottom left, in front of Earth */
+.truck {
+    width: 380px;
+    bottom: 23%;
+    left: 0%;
+    z-index: 6;
+    animation: truckIdle 1.5s ease-in-out infinite alternate;
+}
+@keyframes truckIdle {
+    0%   { transform: translateY(0px); }
+    100% { transform: translateY(-3px); }
+}
 
-    /* 3. Keranjang (Bergerak Maju Mundur Pelan) */
-    .cart {
-        width: 130px;
-        bottom: 15%;
-        right: 25%;
-        animation: moveCart 4s ease-in-out infinite alternate;
-    }
-    @keyframes moveCart {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-15px); }
-    }
+/* 3. Cart/Ship - bottom right of Earth */
+.cart {
+    width: 500px;
+    bottom: 23%;
+    right: -10%;
+    z-index: 6;
+    animation: floatCart 4s ease-in-out infinite alternate;
+}
+@keyframes floatCart {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+}
+.cloud {
+    width: 500px;
+    top: 13%;
+    right: -10%;
+    z-index: 6;
+    animation: floatCloud 4s ease-in-out infinite alternate;
+}
+@keyframes floatCloud {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+}
 
-    /* 4. Kardus (Stay/Diam di tempat) */
-    .boxes {
-        width: 180px;
-        bottom: 10%;
-        right: 8%;
-        /* Tidak ada animasi */
-    }
+.cloud1 {
+    width: 450px;
+    top: 20%;
+    left: -5%;
+    z-index: 6;
+    animation: floatCloud1 4s ease-in-out infinite alternate;
+}
+@keyframes floatCloud1 {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+}
 
-    /* --- RESPONSIVE --- */
-    @media (max-width: 900px) {
-        .login-container { flex-direction: column; }
-        .login-left { flex: 1; padding: 30px; }
-        .login-right { display: none; }
-    }
+/* 4. Boxes - front center-right, biggest layer */
+.boxes {
+    width: 500px;
+    bottom: 15%;
+    left: 40%;
+    transform: translateX(-30%);
+    z-index: 9;
+}
+
+/* --- RESPONSIVE UNTUK LAYAR KECIL --- */
+@media (max-width: 900px) {
+    .login-container { flex-direction: column; }
+    .login-left { flex: 1; padding: 30px; }
+    .login-right { display: none; } 
+}
