@@ -1,0 +1,251 @@
+/* --- RESET & GLOBAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    /* Latar belakang dipergelap menjadi Deep Space Navy */
+    background: linear-gradient(135deg, #05101f 0%, #0a2647 100%);
+    overflow: hidden; 
+}
+
+.home-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* --- NAVBAR / HEADER --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 60px;
+    z-index: 20;
+}
+
+.brand-logo {
+    color: #E3000F; 
+    font-size: 2.8rem;
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.user-name {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* --- MAIN CONTENT LAYOUT --- */
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    padding: 0 60px;
+    position: relative;
+}
+
+/* --- BAGIAN KIRI: TEKS --- */
+.text-section {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 80px; 
+    z-index: 10;
+}
+
+.main-heading {
+    font-size: 3.8rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    font-weight: 800;
+}
+
+/* Disesuaikan karena latar gelap */
+.text-black { color: #ffffff; } 
+.text-white { color: #ffffff; }
+
+.description {
+    font-size: 1.15rem;
+    color: #a5c3e7; /* Diterangkan sedikit agar kontras dengan layar gelap */
+    line-height: 1.5;
+    font-weight: 500;
+    max-width: 500px;
+}
+
+/* --- BAGIAN KANAN: VISUAL BUMI & PESAWAT --- */
+.visual-section {
+    flex: 1;
+    position: relative;
+}
+
+/* 1. Bumi (Sesuai kodemu) */
+.earth-home {
+    height: 550px; 
+    width: 550px;
+    position: absolute;
+    top: 45%; 
+    left: 45%; 
+    transform: translate(-50%, -50%);
+    
+    background-image: url("https://eoimages.gsfc.nasa.gov/images/imagerecords/74000/74117/world.200408.3x5400x2700.jpg");
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    background-position: 0 center;
+    
+    border-radius: 50%;
+    animation: earthRotateHome 40s linear infinite;
+    
+    box-shadow: 
+        0px 0 35px RGBA(255, 255, 255, 0.2), 
+        -10px 0px 15px #c3f4ff inset,
+        30px 5px 50px #000 inset, 
+        -45px -5px 65px #c3f4ff99 inset,
+        500px 0px 80px #00000066 inset, 
+        300px 0px 75px #000000aa inset;
+    z-index: 2; /* Dinaikkan agar di atas bintang */
+}
+
+@keyframes earthRotateHome {
+    0%   { background-position: 0 center; }
+    100% { background-position: 5400px center; }
+}
+
+/* --- CSS BINTANG (Stars) --- */
+.stars-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.curved-corner-star { display: flex; position: relative; }
+#curved-corner-bottomleft, #curved-corner-bottomright, #curved-corner-topleft, #curved-corner-topright {
+    width: 4px; height: 5px; overflow: hidden; position: relative;
+}
+#curved-corner-bottomleft:before, #curved-corner-bottomright:before, #curved-corner-topleft:before, #curved-corner-topright:before {
+    content: ""; display: block; width: 200%; height: 200%; position: absolute; border-radius: 50%;
+}
+#curved-corner-bottomleft:before { bottom: 0; left: 0; box-shadow: -5px 5px 0 0 white; }
+#curved-corner-bottomright:before { bottom: 0; right: 0; box-shadow: 5px 5px 0 0 white; }
+#curved-corner-topleft:before { top: 0; left: 0; box-shadow: -5px -5px 0 0 white; }
+#curved-corner-topright:before { top: 0; right: 0; box-shadow: 5px -5px 0 0 white; }
+
+@keyframes twinkling { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+
+#star-1 { position: absolute; left: 10%; top: 20%; animation: twinkling 3s infinite; }
+#star-2 { position: absolute; left: 20%; top: 70%; animation: twinkling 2s infinite; }
+#star-3 { position: absolute; right: 15%; top: 10%; animation: twinkling 4s infinite; }
+#star-4 { position: absolute; right: 25%; bottom: 15%; animation: twinkling 3s infinite; }
+#star-5 { position: absolute; left: 45%; top: 15%; animation: twinkling 1.5s infinite; }
+#star-6 { position: absolute; right: 40%; top: 25%; animation: twinkling 4s infinite; }
+#star-7 { position: absolute; left: 50%; bottom: 10%; animation: twinkling 2.5s infinite; }
+
+
+/* ==================================================== */
+/* 2. Pesawat (KODE MURNI MILIKMU) */
+/* ==================================================== */
+.home-airplane {
+    position: absolute;
+    width: 580px;
+    top: 30%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(5deg);
+    z-index: 5;
+    animation: floatHomePlane 15s ease-in-out infinite;
+}
+
+@keyframes floatHomePlane {
+    0%, 100% { transform: translate(-50%, -50%) rotate(5deg); }
+    50% { transform: translate(-50%, -65px) rotate(8deg); }
+}
+
+/* ==================================================== */
+/* 3. Awan (KODE MURNI MILIKMU) */
+/* ==================================================== */
+.home-cloud {
+    position: absolute;
+    opacity: 0.85;
+}
+
+.cloud-back {
+    width: 500px;
+    top: 10%;
+    right: -5%;
+    z-index: 2; /* Di belakang pesawat */
+    animation: cloudDrift 8s infinite alternate ease-in-out;
+}
+
+.cloud-front {
+    width: 550px;
+    bottom: 10%;
+    left: -15%;
+    z-index: 6; /* Di depan bumi dan pesawat bagian bawah */
+    animation: cloudDrift 10s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes cloudDrift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(30px); }
+}
+
+/* --- MASKOT CHATBOT --- */
+.chatbot-widget {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 100;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.chatbot-widget:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.speech-bubble {
+    background-color: #0b2342; 
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 15px 25px;
+    border-radius: 25px 25px 0 25px; 
+    border: 3px solid #ffffff;
+    margin-bottom: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.mascot {
+    margin-right: 10px;
+    animation: bounceBot 2s infinite alternate ease-in-out;
+}
+
+@keyframes bounceBot {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
+
+/* --- RESPONSIVE UNTUK LAYAR KECIL --- */
+@media (max-width: 1000px) {
+    .content-wrapper { flex-direction: column; text-align: center; }
+    .text-section { flex: none; align-items: center; padding-bottom: 20px; }
+    .visual-section { display: none; }
+}
