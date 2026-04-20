@@ -249,3 +249,89 @@ body {
     .text-section { flex: none; align-items: center; padding-bottom: 20px; }
     .visual-section { display: none; }
 }
+/* ==================================================== */
+/* PROFILE CARD POPUP (DARK NEUMORPHISM) */
+/* ==================================================== */
+.card {
+  width: 230px;
+  height: 290px; /* Dikurangi karena icon sosial media dihapus */
+  border-radius: 2em;
+  padding: 10px;
+  background-color: #191919;
+  box-shadow: 5px 5px 30px rgb(4, 4, 4), -5px -5px 30px rgb(57, 57, 57);
+  
+  /* Logika Popup */
+  display: none; 
+  position: absolute;
+  top: 70px;
+  right: 0;
+  z-index: 999;
+}
+
+.card.show {
+  display: block; 
+}
+.card-main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Section Nama (Kiri) */
+.user-info-left {
+    text-align: left;
+}
+
+.profileimage {
+  background-color: transparent;
+  border: none;
+  margin-top: 20px;
+  border-radius: 5em;
+  width: 100px;
+  height: 100px;
+}
+
+.pfp {
+  border-radius: 35em;
+  fill: white;
+}
+
+.Name {
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 15px;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px; /* Memberi jarak antara nama dan tombol */
+}
+
+/* Style tombol logout (Dark style kayak di referensi) */
+.logout-button {
+  display: inline-block;
+  background-color: #1a1a1a; /* Warna hitam gelap */
+  border-radius: 20px; /* Bentuk melengkung (pill shape) */
+  width: 70%;
+  padding: 12px;
+  color: #ffffff; /* Teks warna putih */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase; /* Bikin tulisannya jadi LOG OUT otomatis */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Shadow lembut di bawah tombol */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Efek saat mouse diarahkan ke tombol */
+.logout-button:hover {
+  background-color: #2a2a2a; /* Sedikit lebih terang pas di-hover */
+  transform: translateY(-2px);
+}
+
+/* Nah, ini efek pas tombolnya BENERAN DIPENCET / di-klik */
+.logout-button:active {
+  background-color: #e21e26; /* Berubah jadi merah pas dipencet */
+  color: #ffffff;
+  transform: scale(0.95); /* Efek tombol tertekan ke dalam */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
