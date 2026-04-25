@@ -72,32 +72,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 4. LOGIC CHATBOT (SEKARANG SUDAH DI DALAM!)
     // ==========================================
-    const chatbotWidget = document.querySelector('.chatbot-widget');
+    const chatbotWidget = document.querySelector('.chatbot-widget'); // Pastikan class ini ada di icon maskotmu
     const chatContainer = document.getElementById('chatContainer');
     const closeChat = document.getElementById('closeChat');
     const expandBtn = document.getElementById('expandBtn');
 
-    // Toggle Chatbox
+    // 1. Toggle Chatbox (Buka/Tutup)
     if (chatbotWidget && chatContainer) {
         chatbotWidget.addEventListener('click', () => {
-            chatContainer.style.display = chatContainer.style.display === 'flex' ? 'none' : 'flex';
+            chatContainer.style.display = (chatContainer.style.display === 'flex') ? 'none' : 'flex';
         });
     }
 
-    // Close Chatbox
+    // 2. Close Chatbox
     if (closeChat && chatContainer) {
-        closeChat.addEventListener('click', (e) => {
-            e.stopPropagation();
+        closeChat.addEventListener('click', () => {
             chatContainer.style.display = 'none';
-            chatContainer.classList.remove('expanded');
+            chatContainer.classList.remove('expanded'); // Reset ke ukuran kecil
         });
     }
-    
-    // Expand Chatbox
+
+    // 3. Expand Chatbox
     if (expandBtn && chatContainer) {
         expandBtn.addEventListener('click', () => {
             chatContainer.classList.toggle('expanded');
         });
     }
-
-}); 
+});

@@ -330,59 +330,12 @@ body {
   transform: scale(0.95); /* Efek tombol tertekan ke dalam */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
 }
-/* Layout Chat Container - Flexbox */
+
+
 .chat-container {
     position: fixed;
-    bottom: 120px;
-    right: 40px;
-    width: 600px; /* Dibuat lebih lebar agar sidebar muat */
-    height: 500px;
-    background: #0b1a30; /* Biru sangat gelap untuk base */
-    border-radius: 20px;
-    display: none; 
-    flex-direction: row; /* Sidebar kiri, Chat kanan */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 1000;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-/* Sidebar Styles */
-.chat-sidebar {
-    width: 200px;
-    background: rgba(0,0,0,0.2); /* Sedikit lebih gelap dari main */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    border-right: 1px solid rgba(255,255,255,0.1);
-}
-
-.new-chat-btn {
-    padding: 10px;
-    background: #4361ee;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.history-item {
-    padding: 10px;
-    color: #a5c3e7;
-    font-size: 0.85rem;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.history-item:hover { background: rgba(255,255,255,0.1); color: white; }
-
-/* Container Utama */
-.chat-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 30px;
+    right: 30px;
     width: 350px;
     height: 500px;
     background: #0b1a30;
@@ -390,36 +343,35 @@ body {
     display: none; /* Default tersembunyi */
     flex-direction: row;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 9999;
+    z-index: 9999; /* PENTING: Agar selalu di atas */
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 0.4s ease;
 }
 
-/* Sidebar (Hidden by default) */
+/* Sidebar History (Hanya muncul saat expanded) */
 .chat-sidebar {
-    display: none; /* Tidak muncul di mode kecil */
-    width: 250px;
+    display: none; 
+    width: 200px;
     background: rgba(0,0,0,0.2);
     padding: 20px;
     flex-direction: column;
     border-right: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Mode Full Screen */
+/* Full Screen Mode */
 .chat-container.expanded {
-    width: 100vw;
-    height: 100vh;
-    bottom: 0;
-    right: 0;
-    border-radius: 0; /* Biar benar-benar full layar */
+    width: 100vw !important;
+    height: 100vh !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    border-radius: 0 !important;
 }
 
-/* Munculkan sidebar saat expanded */
 .chat-container.expanded .chat-sidebar {
-    display: flex;
+    display: flex; /* Munculkan sidebar saat layar penuh */
 }
 
-/* Area Chat Utama */
+/* Main Area */
 .chat-main {
     flex: 1;
     display: flex;
