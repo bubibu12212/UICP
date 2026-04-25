@@ -82,10 +82,11 @@ body {
 
 .description {
     font-size: 1.15rem;
-    color: #a5c3e7; /* Diterangkan sedikit agar kontras dengan layar gelap */
+    color: #a5c3e7; 
     line-height: 1.5;
     font-weight: 500;
     max-width: 500px;
+    text-align: justify; 
 }
 
 /* --- BAGIAN KANAN: VISUAL BUMI & PESAWAT --- */
@@ -332,50 +333,237 @@ body {
 }
 
 
+/* --- CHATBOX IMPROVED STYLING --- */
+
+/* ================================================= */
+/* CHATBOX UI - GEMINI STYLE DENGAN TEMA "DYX" NAVY  */
+/* ================================================= */
+
 .chat-container {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 350px;
-    height: 500px;
-    background: #0b1a30;
+    width: 400px;
+    height: 600px;
+    background: #0d1b2a; /* Warna dark space */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     display: none; /* Default tersembunyi */
     flex-direction: row;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 9999; /* PENTING: Agar selalu di atas */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    z-index: 9999;
     overflow: hidden;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Sidebar History (Hanya muncul saat expanded) */
+/* KETIKA DI-EXPAND (DIPERLEBAR) */
+.chat-container.expanded {
+    width: 100vw !important;   /* Memenuhi lebar layar */
+    height: 100vh !important;  /* Memenuhi tinggi layar */
+    bottom: 0 !important;      /* Menempel ke bawah */
+    right: 0 !important;       /* Menempel ke kanan */
+    border-radius: 0 !important;    
+}
+
+/* --- SIDEBAR (KUNCI UTAMANYA DI SINI) --- */
 .chat-sidebar {
-    display: none; 
-    width: 200px;
-    background: rgba(0,0,0,0.2);
+    display: none; /* SEMBUNYI SAAT POP-UP KECIL */
+    width: 260px;
+    background: #0a1423; /* Lebih gelap dari konten utama */
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
     padding: 20px;
     flex-direction: column;
-    border-right: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Full Screen Mode */
-.chat-container.expanded {
-    width: 100vw !important;
-    height: 100vh !important;
-    bottom: 0 !important;
-    right: 0 !important;
-    border-radius: 0 !important;
-}
-
+/* MUNCUL SAAT CLASS 'EXPANDED' AKTIF */
 .chat-container.expanded .chat-sidebar {
-    display: flex; /* Munculkan sidebar saat layar penuh */
+    display: flex; 
+    width: 300px; /* Sedikit lebih lebar agar proporsional di layar penuh */
 }
 
-/* Main Area */
+/* Tombol New Chat Sidebar */
+.new-chat-btn {
+    background: #1b263b;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.2s;
+}
+.new-chat-btn:hover { background: #2a3b5c; }
+
+/* List Riwayat Sidebar */
+.history-title { color: #8b9bb4; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+.history-item { color: #d1d5db; padding: 12px; border-radius: 10px; cursor: pointer; transition: 0.2s; font-size: 0.95rem; margin-bottom: 5px; }
+.history-item:hover { background: rgba(255,255,255,0.05); }
+
+/* --- MAIN CHAT AREA --- */
 .chat-main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    width: 100%;
+    background: #0d1b2a;
+}
+
+/* Header */
+.chat-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+}
+.header-actions button {
+    background: transparent; border: none; color: #a5c3e7; cursor: pointer; font-size: 1.2rem; padding: 0 5px; transition: 0.3s;
+}
+.header-actions button:hover { color: #fff; transform: scale(1.1); }
+
+/* Pesan */
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.bot-msg {
+    align-self: flex-start;
+    background: transparent; /* Text polos ala Gemini */
+    color: #e0e1dd;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* --- INPUT TEXT ALA GEMINI (Pill Shape) --- */
+.chat-input-wrapper {
+    padding: 20px;
+    background: #0d1b2a;
+}
+.chat-input {
+    display: flex;
+    align-items: center;
+    background: #1b263b; /* Warna latar dalam input */
+    border-radius: 30px; /* Membuat bentuk oval/pill */
+    padding: 8px 8px 8px 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.chat-input:focus-within {
+    border-color: #4361ee;
+    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.3);
+}
+.chat-input input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+    font-size: 1rem;
+    padding: 10px 0;
+}
+.chat-input input::placeholder {
+    color: #8b9bb4;
+}
+
+/* Tombol Kirim */
+#sendBtn {
+    background: #4361ee; /* Biru cerah sebagai aksen */
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Lingkaran penuh */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: 0.2s;
+}
+#sendBtn:hover {
+    background: #3651d4;
+    transform: scale(1.05);
+}
+
+.hs-glow-btn {
+    position: relative;
+    /* --- INI KUNCI PERBAIKANNYA --- */
+    display: inline-flex; 
+    align-self: flex-start; /* Memaksa tombol merapat ke kiri bawah teks */
+    width: fit-content;     /* Memaksa ukuran tombol pas dengan isinya saja */
+    /* ------------------------------ */
+    
+    margin-top: 35px; 
+    padding: 2px; 
+    font-weight: 600;
+    color: #ffffff;
+    border-radius: 0.75rem; 
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); 
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    text-decoration: none; 
+}
+
+/* Efek membesar/mengecil saat ditekan */
+.hs-glow-btn:hover { transform: scale(1.05); }
+.hs-glow-btn:active { transform: scale(0.95); }
+
+/* Latar belakang gradient yang sembunyi */
+.hs-btn-gradient {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    background: linear-gradient(to right, #2dd4bf, #3b82f6, #a855f7); /* Teal to Blue to Purple */
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* Munculkan gradient saat di hover */
+.hs-glow-btn:hover .hs-btn-gradient {
+    opacity: 1;
+}
+
+/* Konten dalam tombol (warna gelap) */
+.hs-btn-content {
+    position: relative;
+    z-index: 10;
+    display: block;
+    padding: 12px 24px;
+    border-radius: 0.75rem;
+    background-color: #050b14; /* Warna gelap senada dengan background web */
+}
+
+/* Wadah teks dan ikon */
+.hs-btn-inner {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Animasi teks dan ikon geser ke kanan */
+.hs-btn-text, .hs-btn-icon {
+    transition: transform 0.5s;
+}
+
+.hs-glow-btn:hover .hs-btn-text,
+.hs-glow-btn:hover .hs-btn-icon {
+    transform: translateX(4px);
+}
+
+.hs-btn-icon {
+    width: 24px;
+    height: 24px;
 }
