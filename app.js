@@ -69,9 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================
-    // 4. LOGIC CHATBOT (SEKARANG SUDAH DI DALAM!)
-    // ==========================================
+  // 4. LOGIC CHATBOT (SEKARANG SUDAH DI DALAM!)
+    
     const chatbotWidget = document.querySelector('.chatbot-widget'); // Pastikan class ini ada di icon maskotmu
     const chatContainer = document.getElementById('chatContainer');
     const closeChat = document.getElementById('closeChat');

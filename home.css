@@ -498,12 +498,9 @@ body {
 
 .hs-glow-btn {
     position: relative;
-    /* --- INI KUNCI PERBAIKANNYA --- */
     display: inline-flex; 
-    align-self: flex-start; /* Memaksa tombol merapat ke kiri bawah teks */
-    width: fit-content;     /* Memaksa ukuran tombol pas dengan isinya saja */
-    /* ------------------------------ */
-    
+    align-self: flex-start; 
+    width: fit-content;    
     margin-top: 35px; 
     padding: 2px; 
     font-weight: 600;
