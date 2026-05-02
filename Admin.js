@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // ==========================================
+  
     // 1. LOGIC TAB MENU SIDEBAR
-    // ==========================================
+  
     const navItems = document.querySelectorAll('.nav-links li');
     const tabSections = document.querySelectorAll('.tab-section'); // Ambil semua section halaman
 
@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ==========================================
+  
     // 2. LOGOUT ADMIN
-    // ==========================================
+
     const adminLogoutBtn = document.getElementById('adminLogoutBtn');
     if(adminLogoutBtn) {
         adminLogoutBtn.addEventListener('click', () => {
@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================
+
     // 3. ANOMALY DETECTION LOGS
-    // ==========================================
+  
     const dashboardLogBody = document.getElementById('dashboardLogBody');
     const fullAnomalyBody = document.getElementById('fullAnomalyBody');
     const inspectCount = document.getElementById('inspectCount');

@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==========================================
+
     // 1. LOGIC UNTUK HALAMAN LOGIN (index.html)
-    // ==========================================
+
     // ... (kode login kamu tetap di sini) ...
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================
+
     // 2. LOGIC UNTUK HALAMAN SIGN UP (signup.html)
-    // ==========================================
+
     const signupForm = document.getElementById('signupForm');
     if (signupForm) {
         signupForm.addEventListener('submit', function(e) {
@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================
+
     // 3. LOGIC UNTUK HALAMAN HOME (home.html)
-    // ==========================================
+
     const profileTrigger = document.getElementById('profileTrigger');
     const profilePopup = document.getElementById('profilePopup');
     const navUserName = document.getElementById('navUserName');
@@ -99,9 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ==========================================
 // 5. SECURITY & ANOMALY DETECTION (ANTI-INSPECT)
-// ==========================================
 function logAnomaly(action) {
     // Ambil data yang sudah ada, atau buat array baru
     let anomalies = JSON.parse(localStorage.getItem('dyx_anomalies')) || [];
@@ -155,3 +153,24 @@ document.onkeydown = function(e) {
         return false;
     }
 };
+
+    // LOGIC UNTUK HALAMAN UPDATE PASSWORD
+
+    const resetForm = document.getElementById('resetForm');
+    if (resetForm) {
+        resetForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            // Ambil data password yang diinput
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Cek apakah password pertama dan kedua sama persis
+            if (newPassword === confirmPassword) {
+                alert('Password berhasil diperbarui! Silakan login dengan password baru.');
+                window.location.href = 'index.html'; // Lempar kembali ke halaman login
+            } else {
+                alert('Password dan Konfirmasi Password tidak sama! Silakan coba lagi.');
+            }
+        });
+    }

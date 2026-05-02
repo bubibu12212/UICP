@@ -133,9 +133,7 @@
     #star-6 { position: absolute; left: 350px; top: -40px; animation: twinkling 4s infinite; }
     #star-7 { position: absolute; left: 420px; top: 80px; animation: twinkling 2s infinite; }
 
-    /* --- ELEMEN LOGISTIK (DI DEPAN BUMI) --- */
-/* --- ELEMEN LOGISTIK (DI DEPAN BUMI) --- */
-/* --- ELEMEN LOGISTIK (DI DEPAN BUMI) --- */
+
 .scene-element { 
     position: absolute; 
 }
