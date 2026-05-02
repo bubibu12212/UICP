@@ -12,41 +12,49 @@
         <header class="navbar">
             <div class="brand-logo">DYX</div>
             
-            <div style="position: relative;">
-                
-                <div class="user-profile" id="profileTrigger" style="display: flex; flex-direction: row; align-items: center; cursor: pointer; gap: 12px; background: #191919; padding: 5px 15px 5px 5px; border-radius: 30px; box-shadow: 3px 3px 10px rgba(0,0,0,0.3);">
-    
-    <div class="user-icon" style="width: 45px; height: 45px; background: #222; border-radius: 50%; border: 2px solid #ffffff; display: flex; justify-content: center; align-items: center; overflow: hidden;">
-                        <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="46" stroke="white" stroke-width="6"/>
-                            <circle cx="50" cy="35" r="16" fill="white"/>
-                            <path d="M 20 85 Q 50 50 80 85" stroke="white" stroke-width="15" fill="white" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <span class="user-name" id="navUserName">Ica</span>
-                </div>
+            <div style="position: relative; z-index: 999;">
+                <div class="template">
+                    <div
+                        tabindex="0"
+                        class="popup button"
+                        style="padding:0 0.225rem 0; border-radius: 30px; background-color: #191919; box-shadow: 3px 3px 10px rgba(0,0,0,0.3);"
+                    >
+                        <div class="popup-header">
+                            <p id="navUserName" style="letter-spacing: 1px; font-weight: 600; padding: 0.625rem 0.5rem 0.625rem 1rem; color: #fff;">
+                                Ica
+                            </p>
 
-                <div class="card" id="profilePopup">
-                  <center>
-                    <div class="profileimage">
-                      <svg class="pfp" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 122.88">
-                        <g><path d="M61.44,0c8.32,0,16.25,1.66,23.5,4.66l0.11,0.05c7.47,3.11,14.2,7.66,19.83,13.3l0,0c5.66,5.65,10.22,12.42,13.34,19.95 c3.01,7.24,4.66,15.18,4.66,23.49c0,8.32-1.66,16.25-4.66,23.5l-0.05,0.11c-3.12,7.47-7.66,14.2-13.3,19.83l0,0 c-5.65,5.66-12.42,10.22-19.95,13.34c-7.24,3.01-15.18,4.66-23.49,4.66c-8.31,0-16.25-1.66-23.5-4.66l-0.11-0.05 c-7.47-3.11-14.2-7.66-19.83-13.29L18,104.87C12.34,99.21,7.78,92.45,4.66,84.94C1.66,77.69,0,69.76,0,61.44s1.66-16.25,4.66-23.5 l0.05-0.11c3.11-7.47,7.66-14.2,13.29-19.83L18.01,18c5.66-5.66,12.42-10.22,19.94-13.34C45.19,1.66,53.12,0,61.44,0L61.44,0z M16.99,94.47l0.24-0.14c5.9-3.29,21.26-4.38,27.64-8.83c0.47-0.7,0.97-1.72,1.46-2.83c0.73-1.67,1.4-3.5,1.82-4.74 c-1.78-2.1-3.31-4.47-4.77-6.8l-4.83-7.69c-1.76-2.64-2.68-5.04-2.74-7.02c-0.03-0.93,0.13-1.77,0.48-2.52 c0.36-0.78,0.91-1.43,1.66-1.93c0.35-0.24,0.74-0.44,1.17-0.59c-0.32-4.17-0.43-9.42-0.23-13.82c0.1-1.04,0.31-2.09,0.59-3.13 c1.24-4.41,4.33-7.96,8.16-10.4c2.11-1.35,4.43-2.36,6.84-3.04c1.54-0.44-1.31-5.34,0.28-5.51c7.67-0.79,20.08,6.22,25.44,12.01 c2.68,2.9,4.37,6.75,4.73,11.84l-0.3,12.54l0,0c1.34,0.41,2.2,1.26,2.54,2.63c0.39,1.53-0.03,3.67-1.33,6.6l0,0 c-0.02,0.05-0.05,0.11-0.08,0.16l-5.51,9.07c-2.02,3.33-4.08,6.68-6.75,9.31C73.75,80,74,80.35,74.24,80.7 c1.09,1.6,2.19,3.2,3.6,4.63c0.05,0.05,0.09,0.1,0.12,0.15c6.34,4.48,21.77,5.57,27.69,8.87l0.24,0.14 c6.87-9.22,10.93-20.65,10.93-33.03c0-15.29-6.2-29.14-16.22-39.15c-10-10.03-23.85-16.23-39.14-16.23 c-15.29,0-29.14,6.2-39.15,16.22C12.27,32.3,6.07,46.15,6.07,61.44C6.07,73.82,10.13,85.25,16.99,94.47L16.99,94.47L16.99,94.47z"></path></g>
-                      </svg>
-                    </div>
-                    <div class="Name">
-                      <p id="popupUserName">Ica</p>
-                    </div>
-                    
-                    <a href="#" id="logoutBtn" class="logout-button">Log Out</a>
-                  </center>
-                </div>
+                            <svg height="45" width="45" viewBox="0 0 1024 1024" class="icon">
+                                <path fill="#FFCE8B" d="M1021.103385 510.551692A510.551692 510.551692 0 1 1 510.551692 0a510.551692 510.551692 0 0 1 510.551693 510.551692"></path>
+                                <path fill="#644646" d="M809.99026 493.192935v315.26567H494.979866a317.052601 317.052601 0 0 1-66.626996-7.147724V493.192935z"></path>
+                                <path d="M494.979866 808.458605h-66.626996v-7.147724a317.052601 317.052601 0 0 0 66.626996 7.147724"></path>
+                                <path fill="#644646" d="M809.99026 493.192935H428.35287v308.117946A315.010394 315.010394 0 0 1 178.693092 493.192935a310.670705 310.670705 0 0 1 21.953723-115.639958A314.755118 314.755118 0 0 1 494.979866 178.693092a308.373222 308.373222 0 0 1 82.96465 11.232138 313.989291 313.989291 0 0 1 232.045744 304.033532"></path>
+                                <path fill="#C7F4F1" d="M758.935091 959.581906a510.551692 510.551692 0 0 1-512.338624-9.18993 268.55019 268.55019 0 0 1 512.338624 9.18993"></path>
+                                <path fill="#F7BEA9" d="M581.263102 727.02561v86.793788a68.924478 68.924478 0 0 1-137.593681 0v-91.133477a184.309161 184.309161 0 0 0 74.285271 15.571826 178.693092 178.693092 0 0 0 63.30841-11.232137"></path>
+                                <path fill="#FBD1BB" d="M700.987474 390.572045v163.121266a195.796574 195.796574 0 0 1-119.724372 183.798609 172.566472 172.566472 0 0 1-137.593681-4.850241 197.072953 197.072953 0 0 1-108.747511-178.693093v-163.376541a189.92523 189.92523 0 0 1 183.032782-195.796574 176.39561 176.39561 0 0 1 129.424854 57.437065 201.667919 201.667919 0 0 1 53.607928 138.359509"></path>
+                                <path fill="#FBD1BB" d="M370.405253 553.182759a43.396894 43.396894 0 1 1-43.396894-41.099411 42.37579 42.37579 0 0 1 43.396894 41.099411"></path>
+                                <path fill="#F49F83" d="M605.769583 590.963584v2.042207a70.966685 70.966685 0 1 1-141.93337 0v-2.042207"></path>
+                                <path fill="#030303" d="M499.064279 517.699416a18.890413 18.890413 0 1 1-18.890412-18.890412 18.890413 18.890413 0 0 1 18.890412 18.890412M619.043927 517.699416a18.890413 18.890413 0 1 1-18.890412-18.890412 18.890413 18.890413 0 0 1 18.890412 18.890412"></path>
+                                <path fill="#644646" d="M796.46064 401.038354a224.387469 224.387469 0 0 1-282.590362-28.590894 224.132193 224.132193 0 0 1-312.202359 5.105517A314.755118 314.755118 0 0 1 494.979866 178.693092a308.373222 308.373222 0 0 1 82.96465 11.232138 316.031498 316.031498 0 0 1 218.516124 211.878952"></path>
+                            </svg>
+                        </div>
 
+                        <div class="popup-main">
+                            <ul class="list-box">
+                                <li class="button item" onclick="window.location.href='Admin.html'"">Admin</li>
+                                <li class="button item" onclick="window.location.href='about.html'">About Us</li>
+                                <hr />
+                                <li class="button item quit" id="logoutBtn">Quit</li>
+                            </ul>   
+                        </div>
+                    </div>
+                </div>
             </div>
-        </header>
+            </header>
 
         <main class="content-wrapper">
             
-                    <div class="text-section">
+            <div class="text-section">
                 <h1 class="main-heading">
                     <span class="text-white">AI-Powered</span> <span class="text-white">HS</span><br>
                     <span class="text-white">Code</span> <span class="text-white">Classifier</span>
@@ -75,6 +83,7 @@
                     </span>
                 </a>
             </div>
+
             <div class="visual-section">
                 <div class="stars-container">
                     <div id="star-1"><div class="curved-corner-star"><div id="curved-corner-bottomright"></div><div id="curved-corner-bottomleft"></div></div><div class="curved-corner-star"><div id="curved-corner-topright"></div><div id="curved-corner-topleft"></div></div></div>
@@ -113,34 +122,35 @@
                 </svg>
             </div>
         </div>
-            <div class="chat-container" id="chatContainer">
-    <div class="chat-sidebar">
-        <button class="new-chat-btn">+ New Chat</button>
-        <div class="history-list">
-            <p class="history-title">Riwayat</p>
-            <div class="history-item">Analisis HS Code Mesin</div>
-            <div class="history-item">Data Procurement</div>
-        </div>
-    </div>
 
-    <div class="chat-main">
-        <div class="chat-header">
-            <span>AI HS Code</span>
-            <div class="header-actions">
-                <button id="expandBtn">⤢</button>
-                <button id="closeChat">×</button>
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-sidebar">
+                <button class="new-chat-btn">+ New Chat</button>
+                <div class="history-list">
+                    <p class="history-title">Riwayat</p>
+                    <div class="history-item">Analisis HS Code Mesin</div>
+                    <div class="history-item">Data Procurement</div>
+                </div>
+            </div>
+
+            <div class="chat-main">
+                <div class="chat-header">
+                    <span>AI HS Code</span>
+                    <div class="header-actions">
+                        <button id="expandBtn">⤢</button>
+                        <button id="closeChat">×</button>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="bot-msg">Halo Ica, ada yang bisa saya bantu?</div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="Ketik pesan...">
+                    <button id="sendBtn">➤</button>
+                </div>
             </div>
         </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="bot-msg">Halo Ica, ada yang bisa saya bantu?</div>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="chatInput" placeholder="Ketik pesan...">
-            <button id="sendBtn">➤</button>
-        </div>
-    </div>
-</div>
-</div>
+
     </div>
     <script src="app.js"></script>
 </body>

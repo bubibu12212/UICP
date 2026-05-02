@@ -37,20 +37,6 @@ body {
     letter-spacing: 1px;
 }
 
-.user-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.user-name {
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 1rem;
-}
-
 /* --- MAIN CONTENT LAYOUT --- */
 .content-wrapper {
     flex: 1;
@@ -76,7 +62,6 @@ body {
     font-weight: 800;
 }
 
-/* Disesuaikan karena latar gelap */
 .text-black { color: #ffffff; } 
 .text-white { color: #ffffff; }
 
@@ -95,7 +80,7 @@ body {
     position: relative;
 }
 
-/* 1. Bumi (Sesuai kodemu) */
+/* 1. Bumi */
 .earth-home {
     height: 550px; 
     width: 550px;
@@ -119,7 +104,7 @@ body {
         -45px -5px 65px #c3f4ff99 inset,
         500px 0px 80px #00000066 inset, 
         300px 0px 75px #000000aa inset;
-    z-index: 2; /* Dinaikkan agar di atas bintang */
+    z-index: 2; 
 }
 
 @keyframes earthRotateHome {
@@ -156,10 +141,7 @@ body {
 #star-6 { position: absolute; right: 40%; top: 25%; animation: twinkling 4s infinite; }
 #star-7 { position: absolute; left: 50%; bottom: 10%; animation: twinkling 2.5s infinite; }
 
-
-/* ==================================================== */
-/* 2. Pesawat (KODE MURNI MILIKMU) */
-/* ==================================================== */
+/* 2. Pesawat */
 .home-airplane {
     position: absolute;
     width: 580px;
@@ -184,7 +166,7 @@ body {
     width: 500px;
     top: 10%;
     right: -5%;
-    z-index: 2; /* Di belakang pesawat */
+    z-index: 2; 
     animation: cloudDrift 8s infinite alternate ease-in-out;
 }
 
@@ -192,7 +174,7 @@ body {
     width: 550px;
     bottom: 10%;
     left: -15%;
-    z-index: 6; /* Di depan bumi dan pesawat bagian bawah */
+    z-index: 6; 
     animation: cloudDrift 10s infinite alternate-reverse ease-in-out;
 }
 
@@ -247,108 +229,18 @@ body {
     .text-section { flex: none; align-items: center; padding-bottom: 20px; }
     .visual-section { display: none; }
 }
-/* chatbot widget tetap muncul di layar kecil */
-.card {
-  width: 230px;
-  height: 290px; /* Dikurangi karena icon sosial media dihapus */
-  border-radius: 2em;
-  padding: 10px;
-  background-color: #191919;
-  box-shadow: 5px 5px 30px rgb(4, 4, 4), -5px -5px 30px rgb(57, 57, 57);
-  
-  /* Logika Popup */
-  display: none; 
-  position: absolute;
-  top: 70px;
-  right: 0;
-  z-index: 999;
-}
-
-.card.show {
-  display: block; 
-}
-.card-main-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-/* Section Nama (Kiri) */
-.user-info-left {
-    text-align: left;
-}
-
-.profileimage {
-  background-color: transparent;
-  border: none;
-  margin-top: 20px;
-  border-radius: 5em;
-  width: 100px;
-  height: 100px;
-}
-
-.pfp {
-  border-radius: 35em;
-  fill: white;
-}
-
-.Name {
-  color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 15px;
-  font-size: 20px;
-  margin-top: 10px;
-  margin-bottom: 5px; /* Memberi jarak antara nama dan tombol */
-}
-
-/* Style tombol logout (Dark style kayak di referensi) */
-.logout-button {
-  display: inline-block;
-  background-color: #1a1a1a; /* Warna hitam gelap */
-  border-radius: 20px; /* Bentuk melengkung (pill shape) */
-  width: 70%;
-  padding: 12px;
-  color: #ffffff; /* Teks warna putih */
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 14px;
-  text-transform: uppercase; /* Bikin tulisannya jadi LOG OUT otomatis */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Shadow lembut di bawah tombol */
-  transition: all 0.2s ease-in-out;
-}
-
-/* Efek saat mouse diarahkan ke tombol */
-.logout-button:hover {
-  background-color: #2a2a2a; /* Sedikit lebih terang pas di-hover */
-  transform: translateY(-2px);
-}
-
-/* Nah, ini efek pas tombolnya BENERAN DIPENCET / di-klik */
-.logout-button:active {
-  background-color: #e21e26; /* Berubah jadi merah pas dipencet */
-  color: #ffffff;
-  transform: scale(0.95); /* Efek tombol tertekan ke dalam */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
-}
-
 
 /* --- CHATBOX IMPROVED STYLING --- */
-
-/* ================================================= */
-/* CHATBOX UI - GEMINI STYLE DENGAN TEMA "DYX" NAVY  */
-/* ================================================= */
-
 .chat-container {
     position: fixed;
     bottom: 30px;
     right: 30px;
     width: 400px;
     height: 600px;
-    background: #0d1b2a; /* Warna dark space */
+    background: #0d1b2a; 
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    display: none; /* Default tersembunyi */
+    display: none; 
     flex-direction: row;
     box-shadow: 0 15px 40px rgba(0,0,0,0.6);
     z-index: 9999;
@@ -356,32 +248,28 @@ body {
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* KETIKA DI-EXPAND (DIPERLEBAR) */
 .chat-container.expanded {
-    width: 100vw !important;   /* Memenuhi lebar layar */
-    height: 100vh !important;  /* Memenuhi tinggi layar */
-    bottom: 0 !important;      /* Menempel ke bawah */
-    right: 0 !important;       /* Menempel ke kanan */
+    width: 100vw !important;   
+    height: 100vh !important;  
+    bottom: 0 !important;      
+    right: 0 !important;       
     border-radius: 0 !important;    
 }
 
-/* --- SIDEBAR (KUNCI UTAMANYA DI SINI) --- */
 .chat-sidebar {
-    display: none; /* SEMBUNYI SAAT POP-UP KECIL */
+    display: none; 
     width: 260px;
-    background: #0a1423; /* Lebih gelap dari konten utama */
+    background: #0a1423; 
     border-right: 1px solid rgba(255, 255, 255, 0.05);
     padding: 20px;
     flex-direction: column;
 }
 
-/* MUNCUL SAAT CLASS 'EXPANDED' AKTIF */
 .chat-container.expanded .chat-sidebar {
     display: flex; 
-    width: 300px; /* Sedikit lebih lebar agar proporsional di layar penuh */
+    width: 300px; 
 }
 
-/* Tombol New Chat Sidebar */
 .new-chat-btn {
     background: #1b263b;
     color: #fff;
@@ -398,12 +286,10 @@ body {
 }
 .new-chat-btn:hover { background: #2a3b5c; }
 
-/* List Riwayat Sidebar */
 .history-title { color: #8b9bb4; font-size: 0.85rem; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
 .history-item { color: #d1d5db; padding: 12px; border-radius: 10px; cursor: pointer; transition: 0.2s; font-size: 0.95rem; margin-bottom: 5px; }
 .history-item:hover { background: rgba(255,255,255,0.05); }
 
-/* --- MAIN CHAT AREA --- */
 .chat-main {
     flex: 1;
     display: flex;
@@ -411,7 +297,6 @@ body {
     background: #0d1b2a;
 }
 
-/* Header */
 .chat-header {
     padding: 20px;
     display: flex;
@@ -427,7 +312,6 @@ body {
 }
 .header-actions button:hover { color: #fff; transform: scale(1.1); }
 
-/* Pesan */
 .chat-messages {
     flex: 1;
     padding: 20px;
@@ -438,13 +322,12 @@ body {
 }
 .bot-msg {
     align-self: flex-start;
-    background: transparent; /* Text polos ala Gemini */
+    background: transparent; 
     color: #e0e1dd;
     line-height: 1.6;
     font-size: 0.95rem;
 }
 
-/* --- INPUT TEXT ALA GEMINI (Pill Shape) --- */
 .chat-input-wrapper {
     padding: 20px;
     background: #0d1b2a;
@@ -452,8 +335,8 @@ body {
 .chat-input {
     display: flex;
     align-items: center;
-    background: #1b263b; /* Warna latar dalam input */
-    border-radius: 30px; /* Membuat bentuk oval/pill */
+    background: #1b263b; 
+    border-radius: 30px; 
     padding: 8px 8px 8px 20px;
     border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -476,14 +359,13 @@ body {
     color: #8b9bb4;
 }
 
-/* Tombol Kirim */
 #sendBtn {
-    background: #4361ee; /* Biru cerah sebagai aksen */
+    background: #4361ee; 
     color: white;
     border: none;
     width: 40px;
     height: 40px;
-    border-radius: 50%; /* Lingkaran penuh */
+    border-radius: 50%; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -512,36 +394,31 @@ body {
     text-decoration: none; 
 }
 
-/* Efek membesar/mengecil saat ditekan */
 .hs-glow-btn:hover { transform: scale(1.05); }
 .hs-glow-btn:active { transform: scale(0.95); }
 
-/* Latar belakang gradient yang sembunyi */
 .hs-btn-gradient {
     position: absolute;
     inset: 0;
     border-radius: 0.75rem;
-    background: linear-gradient(to right, #2dd4bf, #3b82f6, #a855f7); /* Teal to Blue to Purple */
+    background: linear-gradient(to right, #2dd4bf, #3b82f6, #a855f7); 
     opacity: 0;
     transition: opacity 0.5s;
 }
 
-/* Munculkan gradient saat di hover */
 .hs-glow-btn:hover .hs-btn-gradient {
     opacity: 1;
 }
 
-/* Konten dalam tombol (warna gelap) */
 .hs-btn-content {
     position: relative;
     z-index: 10;
     display: block;
     padding: 12px 24px;
     border-radius: 0.75rem;
-    background-color: #050b14; /* Warna gelap senada dengan background web */
+    background-color: #050b14; 
 }
 
-/* Wadah teks dan ikon */
 .hs-btn-inner {
     position: relative;
     z-index: 10;
@@ -550,7 +427,6 @@ body {
     gap: 8px;
 }
 
-/* Animasi teks dan ikon geser ke kanan */
 .hs-btn-text, .hs-btn-icon {
     transition: transform 0.5s;
 }
@@ -563,4 +439,116 @@ body {
 .hs-btn-icon {
     width: 24px;
     height: 24px;
+}
+
+/* ==================================================== */
+/* NEW TEMPLATE PROFILE DROPDOWN (REVISI)               */
+/* ==================================================== */
+.template {
+  /* fill */
+  --fill: #0000;
+  --fill-hover: hsla(0, 0%, 45%, 0.2);
+  --fill-active: hsl(0, 0%, 10%);
+  /* txt */
+  --txt: #ccc;
+  /*-------------------------*/
+  --br: 0.625rem;
+  --gap: 0.25rem;
+  --popup-main-h: auto; /* Dibuat auto agar menyesuaikan isinya */
+  /*-------------------------*/
+  display: flex;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 0.975rem;
+  color: var(--txt);
+}
+
+/* button */
+.button {
+  position: relative;
+  display: inline-block;
+  list-style-type: none;
+  list-style: none;
+  appearance: none;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: inherit;
+  color: inherit;
+  white-space: nowrap;
+  padding: calc(var(--gap) * 2) calc(var(--gap) * 8) calc(var(--gap) * 2) calc(var(--gap) * 4);
+  text-align: left;
+  background-color: var(--fill);
+  border-radius: var(--br) calc(var(--br) / 2) calc(var(--br) / 2) var(--br);
+  transition: background-color 500ms;
+}
+
+.button:hover {
+  background-color: var(--fill-hover);
+}
+
+.button.quit:hover {
+  background-color: #e21e26; /* Sesuaikan warna merah dengan tema web */
+  color: white;
+}
+
+.button:focus,
+.button:active,
+.button.active {
+  background-color: var(--fill-active);
+}
+
+.template hr {
+  margin: 0.8rem;
+  border: 1px dashed #313131;
+}
+
+/* popup */
+.popup {
+  position: relative;
+}
+
+.popup-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: calc(var(--gap) * 1);
+}
+
+.popup-main {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  opacity: 0;
+  visibility: hidden; /* Tambahan agar tidak bisa diklik saat tersembunyi */
+  margin-top: var(--gap);
+  border-radius: var(--br);
+  padding: 0 calc(var(--gap) * 1.5);
+  background-color: #191919; /* Disesuaikan dengan warna card lamamu */
+  box-shadow: 5px 5px 30px rgb(4, 4, 4);
+  transition: 0.4s;
+  overflow: hidden;
+  height: var(--popup-main-h);
+}
+
+.popup:focus .popup-main,
+.popup:focus-within .popup-main {
+  margin-top: 1rem;
+  opacity: 1;
+  visibility: visible;
+}
+
+.list-box {
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  overflow: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--gap) * 2) 0 calc(var(--gap) * 3) 0;
 }

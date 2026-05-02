@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - DYX</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="brand-logo">DYX Admin</div>
+            <ul class="nav-links">
+                <li class="active" data-target="dashboard-section"><a href="#">Dashboard</a></li>
+                <li data-target="user-logs-section"><a href="#">User Logs</a></li>
+                <li data-target="anomaly-section"><a href="#">Anomaly Detection</a></li>
+                <li data-target="ai-flow-section"><a href="#">AI Flow Monitor</a></li>
+            </ul>
+                <section id="user-logs-section" class="tab-content">
+                    <h2>User Login History</h2>
+                    </section>
+
+                <section id="anomaly-section" class="tab-content">
+                    <h2>Detected Anomalies</h2>
+                    </section>
+
+                <section id="ai-flow-section" class="tab-content">
+                    <h2>AI Complexity Flow</h2>
+                    </section>
+            </main>
+            <div class="sidebar-bottom">
+                <a href="home.html" class="back-btn">← Back to Home</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="admin-header">
+                <h2>System Overview</h2>
+                
+                <div class="admin-profile">
+                    <div class="template">
+                        <div tabindex="0" class="popup button profile-btn">
+                            <div class="popup-header">
+                                <span style="font-weight: 600; color: #fff; margin-right: 10px;">Admin Ica</span>
+                                <div class="avatar">I</div>
+                            </div>
+                            <div class="popup-main">
+                                <ul class="list-box">
+                                    <li class="button item" onclick="window.location.href='home.html'">Back to Home</li>
+                                    <hr />
+                                    <li class="button item quit" id="adminLogoutBtn">Log Out</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section id="view-dashboard" class="tab-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Logins</h3>
+                        <p class="value" id="totalLogins">1,204</p>
+                        <span class="status success">+12% this week</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Inspect Attempts (Anomalies)</h3>
+                        <p class="value text-danger" id="inspectCount">0</p>
+                        <span class="status danger">Requires Attention</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>AI Processing Accuracy</h3>
+                        <p class="value text-primary">98.5%</p>
+                        <span class="status success">Stable</span>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="card panel">
+                        <h3>Live Security Logs</h3>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>User</th>
+                                        <th>Event</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dashboardLogBody">
+                                    <tr>
+                                        <td>10:05 AM</td>
+                                        <td>Anggie</td>
+                                        <td>Login Success</td>
+                                        <td><span class="badge success">Normal</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card panel">
+                        <h3>AI Flow Status</h3>
+                        <div class="ai-flow">
+                            <div class="flow-step">
+                                <div class="step-icon">📝</div>
+                                <div class="step-text">Input Data</div>
+                            </div>
+                            <div class="flow-arrow">➔</div>
+                            <div class="flow-step processing">
+                                <div class="step-icon">🧠</div>
+                                <div class="step-text">NLP Processing</div>
+                            </div>
+                            <div class="flow-arrow">➔</div>
+                            <div class="flow-step success">
+                                <div class="step-icon">✅</div>
+                                <div class="step-text">Code Found</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-user-logs" class="tab-section">
+                <div class="card panel">
+                    <h3>Complete User Logs</h3>
+                    <p style="color: #94a3b8; margin-bottom: 20px;">History of all users entering the HS Code system.</p>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date & Time</th>
+                                    <th>User</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Today, 10:05 AM</td><td>Anggie</td><td>Login Success</td></tr>
+                                <tr><td>Today, 09:30 AM</td><td>Aura</td><td>Login Success</td></tr>
+                                <tr><td>Yesterday, 14:20 PM</td><td>Ica</td><td>Logged Out</td></tr>
+                                <tr><td>Yesterday, 08:15 AM</td><td>Ica</td><td>Login Success</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-anomaly" class="tab-section">
+                <div class="card panel" style="border-color: rgba(239, 68, 68, 0.3);">
+                    <h3 style="color: #ef4444;">🚨 Suspicious Activities (Inspect Element & Right-Click)</h3>
+                    <div class="table-responsive">
+                        <table id="anomalyTable">
+                            <thead>
+                                <tr>
+                                    <th>Time Detected</th>
+                                    <th>Target User</th>
+                                    <th>Violation Type</th>
+                                    <th>Action Taken</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fullAnomalyBody">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-ai-flow" class="tab-section">
+                <div class="card panel">
+                    <h3>Deep AI Task Complexity Monitor</h3>
+                    
+                    <div class="ai-flow" style="margin-bottom: 20px;">
+                        <div class="flow-step">
+                            <div class="step-icon">📝</div>
+                            <div class="step-text">Input Data<br><small>Complex Engine Parts</small></div>
+                        </div>
+                        <div class="flow-arrow">➔</div>
+                        <div class="flow-step processing">
+                            <div class="step-icon">🧠</div>
+                            <div class="step-text">NLP Processing<br><small>Extracting Keywords...</small></div>
+                        </div>
+                        <div class="flow-arrow">➔</div>
+                        <div class="flow-step success">
+                            <div class="step-icon">✅</div>
+                            <div class="step-text">HS Code Found<br><small>8409.99.10</small></div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-flow">
+                        <div class="flow-step">
+                            <div class="step-icon">📝</div>
+                            <div class="step-text">Input Data<br><small>Ambiguous text: "Gigi"</small></div>
+                        </div>
+                        <div class="flow-arrow">➔</div>
+                        <div class="flow-step processing">
+                            <div class="step-icon">🧠</div>
+                            <div class="step-text">Neural Net<br><small>Low Confidence...</small></div>
+                        </div>
+                        <div class="flow-arrow">➔</div>
+                        <div class="flow-step error">
+                            <div class="step-icon">❌</div>
+                            <div class="step-text">Manual Review<br><small>Needs Human</small></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

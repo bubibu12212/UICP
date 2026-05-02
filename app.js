@@ -98,3 +98,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// ==========================================
+// 5. SECURITY & ANOMALY DETECTION (ANTI-INSPECT)
+// ==========================================
+function logAnomaly(action) {
+    // Ambil data yang sudah ada, atau buat array baru
+    let anomalies = JSON.parse(localStorage.getItem('dyx_anomalies')) || [];
+    
+    // Siapkan data log baru
+    const newLog = {
+        time: new Date().toLocaleTimeString(),
+        user: localStorage.getItem('user') || 'Unknown IP',
+        action: action
+    };
+
+    // Simpan ke localStorage (agar bisa dibaca di admin.html)
+    anomalies.push(newLog);
+    localStorage.setItem('dyx_anomalies', JSON.stringify(anomalies));
+
+    // Berikan peringatan ke user nakal
+    alert("SYSTEM ANOMALY DETECTED: You are not allowed to inspect this page. This action has been logged.");
+}
+
+// Deteksi Klik Kanan
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    logAnomaly("Attempted Right-Click");
+});
+
+// Deteksi Shortcut Keyboard Inspect Element (F12, Ctrl+Shift+I, dll)
+document.onkeydown = function(e) {
+    if (e.keyCode == 123) { // F12
+        e.preventDefault();
+        logAnomaly("Attempted F12 (DevTools)");
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { // Ctrl+Shift+I
+        e.preventDefault();
+        logAnomaly("Attempted Ctrl+Shift+I (DevTools)");
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { // Ctrl+Shift+C
+        e.preventDefault();
+        logAnomaly("Attempted Ctrl+Shift+C (Inspect Element)");
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { // Ctrl+Shift+J
+        e.preventDefault();
+        logAnomaly("Attempted Ctrl+Shift+J (Console)");
+        return false;
+    }
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { // Ctrl+U (View Source)
+        e.preventDefault();
+        logAnomaly("Attempted Ctrl+U (View Source)");
+        return false;
+    }
+};
